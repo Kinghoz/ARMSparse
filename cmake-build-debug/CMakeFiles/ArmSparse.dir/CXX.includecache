@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/work/ArmSparse/sparseMatrixAdd.cpp
+stdio.h
+-
+stdlib.h
+-
+sys/time.h
+-
+ctime
+-
+iostream
+-
+string.h
+-
+omp.h
+-
+

@@ -1,0 +1,3 @@
+"C:\App2\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\ArmSparse.dir/objects.a
+C:\PROGRA~2\Dev-Cpp\MinGW64\bin\ar.exe cr CMakeFiles\ArmSparse.dir/objects.a @CMakeFiles\ArmSparse.dir\objects1.rsp
+C:\PROGRA~2\Dev-Cpp\MinGW64\bin\G__~1.EXE  -fopenmp -g   -Wl,--whole-archive CMakeFiles\ArmSparse.dir/objects.a -Wl,--no-whole-archive  -o ArmSparse.exe -Wl,--out-implib,libArmSparse.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\ArmSparse.dir\linklibs.rsp
