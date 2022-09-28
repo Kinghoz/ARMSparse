@@ -14,9 +14,6 @@ git clone git@github.com:Kinghoz/ARMSparse.git
 - eigen-3.3.9
 - OpenBLAS
 - OpenMP/Pthread
-- pytorch
-- dgl
-- pytorch_geometric
 
 ## ARMSparse
 example for compiling sdmm spmm spmv 
@@ -31,7 +28,48 @@ run sdmm spmm spmv
 ./SpMM 4096 4096 4096 32
 ./SpMV 4096 4096 32
 ```
+Examples of SuiteSparse dataset evaluation
+```
+g++ -g -O3 suitesparse_sdmm.cpp -o suitesparse_sdmm -I $PATHOFOPENBLAS/include -L $PATHOFOPENBLAS/lib -lopenblas -fopenmp
+g++ -g -O3 suitesparse_spmm.cpp -o suitesparse_spmm -I $PATHOFOPENBLAS/include -L $PATHOFOPENBLAS/lib -lopenblas -fopenmp
+
+./suitesparse_sdmm 32
+./suitesparse_spmm 32
+```
+Benchmark in ./benchmark/eigen and ./benchmark/armadillo
 
 ## NUMA-aware
+```
+cd numaAware
+g++ -g -O3 numaAwareSDMM.cpp -o numaAwareSDMM -I $PATHOFOPENBLAS/include -L $PATHOFOPENBLAS/lib -lopenblas -lpthread -lnuma -fopenmp
+g++ -g -O3 numaAwareSpMM.cpp -o numaAwareSpMM -I $PATHOFOPENBLAS/include -L $PATHOFOPENBLAS/lib -lopenblas -lpthread -lnuma -fopenmp
+g++ -g -O3 numaAwareSpMV.cpp -o numaAwareSpMV -I $PATHOFOPENBLAS/include -L $PATHOFOPENBLAS/lib -lopenblas -lpthread -lnuma -fopenmp
+
+./numaAwareSDMM 4096 4096 4096 
+./numaAwareSpMM 4096 4096 4096 
+./numaAwareSDMV 4096 4096
+```
 
 ## application on GCN
+we integrate ARMSparse into pytorch and implement a graph convolution network with our contribution.
+### Prerequisites
+- pytorch
+- dgl
+- pytorch_geometric
+
+Simple example for gcn_custom. You are able to switch the dataset to PubMed or cora and change the structure of network.
+```
+cd gcn/pytorch-custom
+python gcn_custom.py --n-hidden=64
+```
+Example of GCN in PYG.
+```
+cd gcn/pytorch-custom
+python gcn_pyg.py --n-hidden=64
+```
+Example of GCN in DGL
+```
+cd $(this-repo)/dgl-custom/benchmark
+cd gcn
+python gcn_dgl.py --gpu=0 --dataset=pubmed --n-hidden=64 --n-layers=1
+```
