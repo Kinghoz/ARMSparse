@@ -1,4 +1,4 @@
-//g++ -I /home/zhengj/eigen-3.3.9 Eigen_suitesparse.cpp -o Eigen_suitesparse -O3 -fopenmp
+//g++ -I /home/zhengj/eigen-3.3.9 eigen_suitesparse.cpp -o eigen_suitesparse -O3 -fopenmp
 #include <Eigen/Sparse>
 #include <Eigen/Dense>
 #include <stdlib.h>
