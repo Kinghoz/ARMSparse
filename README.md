@@ -16,14 +16,14 @@ git clone git@github.com:Kinghoz/ARMSparse.git
 - OpenMP/Pthread
 
 ## ARMSparse
-example for compiling sdmm spmm spmv 
+Example for compiling sdmm spmm spmv 
 ```
 cd $(this-repo)
 g++ -g -O3 SDMM.cpp -o SDMM -I $PATHOFOPENBLAS/include -L $PATHOFOPENBLAS/lib -lopenblas -fopenmp
 g++ -g -O3 SpMM.cpp -o SpMM -I $PATHOFOPENBLAS/include -L $PATHOFOPENBLAS/lib -lopenblas -fopenmp
 g++ -g -O3 SpMV.cpp -o SpMV -I $PATHOFOPENBLAS/include -L $PATHOFOPENBLAS/lib -lopenblas -fopenmp
 ```
-run sdmm spmm spmv
+Run sdmm spmm spmv
 ```
 ./SDMM 4096 4096 4096 32 0.1
 ./SpMM 4096 4096 4096 32
@@ -38,18 +38,46 @@ g++ -g -O3 suitesparse_spmm.cpp -o suitesparse_spmm -I $PATHOFOPENBLAS/include -
 ./suitesparse_spmm 32
 ```
 ### Benchmark
-we compare the performance of ARMSparse with eigen and armadillo
+We compare the performance of ARMSparse with eigen and armadillo
+Eigen
 ```
 cd $(this-repo)/benchmark/eigen
-g++ -I $PATHOFEIGEN/eigen-3.3.9 Eigen_sdmm.cpp -o Eigen_sdmm -O3 -fopenmp
-g++ -I $PATHOFEIGEN/eigen-3.3.9 Eigen_spmm.cpp -o Eigen_spmm -O3 -fopenmp
-g++ -I $PATHOFEIGEN/eigen-3.3.9 Eigen_spmv.cpp -o Eigen_spmv -O3 -fopenmp
+g++ -I $PATHOFEIGEN/eigen-3.3.9 eigen_sdmm.cpp -o eigen_sdmm -O3 -fopenmp
+g++ -I $PATHOFEIGEN/eigen-3.3.9 eigen_spmm.cpp -o eigen_spmm -O3 -fopenmp
+g++ -I $PATHOFEIGEN/eigen-3.3.9 eigen_spmv.cpp -o eigen_spmv -O3 -fopenmp
 
-./Eigen_sdmm 4096 4096 4096 32
-./Eigen_spmm 4096 4096 4096 32
-./Eigen_spmv 4096 4096 4096 32
+./eigen_sdmm 4096 4096 4096 32
+./eigen_spmm 4096 4096 4096 32
+./eigen_spmv 4096 4096 32
+```
+Run eigen with SuiteSparse dataset
+```
+g++ -I ~/zhengj/work/eigen-3.3.9 eigen_sdmm_suitesparse.cpp -o eigen_sdmm_suitesparse -O3 -fopenmp
+g++ -I ~/zhengj/work/eigen-3.3.9 eigen_spmm_suitesparse.cpp -o eigen_spmm_suitesparse -O3 -fopenmp
+g++ -I ~/zhengj/work/eigen-3.3.9 eigen_spmv_suitesparse.cpp -o eigen_spmv_suitesparse -O3 -fopenmp
+./eigen_sdmm_suitesparse 32
+./eigen_spmm_suitesparse 32
+./eigen_spmv_suitesparse 32
+```
+Armadillo
+```
+cd $(this-repo)/benchmark/armadillo
+g++ armadillo_sdmm.cpp -o armadillo_sdmm -O3 -I $PATHOFARMADILLO/armadillo-10.5.1/include -DARMA_DONT_USE_WRAPPER -lblas -llapack -fopenmp
+g++ armadillo_spmm.cpp -o armadillo_spmm -O3 -I $PATHOFARMADILLO/armadillo-10.5.1/include -DARMA_DONT_USE_WRAPPER -lblas -llapack -fopenmp
+g++ armadillo_spmv.cpp -o armadillo_spmv -O3 -I $PATHOFARMADILLO/armadillo-10.5.1/include -DARMA_DONT_USE_WRAPPER -lblas -llapack -fopenmp
 
-cd $(this-repo)/benchmark/eigen
+./armadillo_sdmm 4096 4096 4096 32
+./armadillo_spmm 4096 4096 4096 32
+./armadillo_spmv 4096 4096 32
+```
+Run armadillo with SuiteSparse dataset
+```
+g++ armadillo_sdmm_suitesparse.cpp -o armadillo_sdmm_suitesparse -O3 -I $PATHOFARMADILLO/armadillo-10.5.1/include -DARMA_DONT_USE_WRAPPER -lblas -llapack -fopenmp
+g++ armadillo_spmm_suitesparse.cpp -o armadillo_spmm_suitesparse -O3 -I $PATHOFARMADILLO/armadillo-10.5.1/include -DARMA_DONT_USE_WRAPPER -lblas -llapack -fopenmp
+g++ armadillo_spmv_suitesparse.cpp -o armadillo_spmv_suitesparse -O3 -I $PATHOFARMADILLO/armadillo-10.5.1/include -DARMA_DONT_USE_WRAPPER -lblas -llapack -fopenmp
+./armadillo_sdmm_suitesparse 32
+./armadillo_spmm_suitesparse 32
+./armadillo_spmv_suitesparse 32
 ```
 
 ## NUMA-aware
@@ -65,7 +93,7 @@ g++ -g -O3 numaAwareSpMV.cpp -o numaAwareSpMV -I $PATHOFOPENBLAS/include -L $PAT
 ```
 
 ## application on GCN
-we integrate ARMSparse into pytorch and implement a graph convolution network with our contribution.
+We integrate ARMSparse into pytorch and implement a graph convolution network with our contribution.
 ### Prerequisites
 - pytorch
 - dgl
