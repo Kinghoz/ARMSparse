@@ -8,15 +8,18 @@ ARMSparse is an optimized computing library for sparse matrix computing on ARM m
 git clone git@github.com:Kinghoz/ARMSparse.git
 ```
 ## Prerequisites
+- AArch64 architecture
+- NUMA architecture
 - armadillo-10.5.1
 - eigen-3.3.9
 - OpenBLAS
-- AArch64
 - OpenMP/Pthread
-- NUMA architecture
+- pytorch
+- dgl
+- pytorch_geometric
 
 ## ARMSparse
-compile sdmm spmm spmv 
+example for compiling sdmm spmm spmv 
 ```
 g++ -g -O3 SDMM.cpp -o SDMM -I $PATHOFOPENBLAS/include -L $PATHOFOPENBLAS/lib -lopenblas -fopenmp
 g++ -g -O3 SpMM.cpp -o SpMM -I $PATHOFOPENBLAS/include -L $PATHOFOPENBLAS/lib -lopenblas -fopenmp
