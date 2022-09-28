@@ -55,6 +55,7 @@ Run eigen with SuiteSparse dataset
 g++ -I ~/zhengj/work/eigen-3.3.9 eigen_sdmm_suitesparse.cpp -o eigen_sdmm_suitesparse -O3 -fopenmp
 g++ -I ~/zhengj/work/eigen-3.3.9 eigen_spmm_suitesparse.cpp -o eigen_spmm_suitesparse -O3 -fopenmp
 g++ -I ~/zhengj/work/eigen-3.3.9 eigen_spmv_suitesparse.cpp -o eigen_spmv_suitesparse -O3 -fopenmp
+
 ./eigen_sdmm_suitesparse 32
 ./eigen_spmm_suitesparse 32
 ./eigen_spmv_suitesparse 32
@@ -75,6 +76,7 @@ Run armadillo with SuiteSparse dataset
 g++ armadillo_sdmm_suitesparse.cpp -o armadillo_sdmm_suitesparse -O3 -I $PATHOFARMADILLO/armadillo-10.5.1/include -DARMA_DONT_USE_WRAPPER -lblas -llapack -fopenmp
 g++ armadillo_spmm_suitesparse.cpp -o armadillo_spmm_suitesparse -O3 -I $PATHOFARMADILLO/armadillo-10.5.1/include -DARMA_DONT_USE_WRAPPER -lblas -llapack -fopenmp
 g++ armadillo_spmv_suitesparse.cpp -o armadillo_spmv_suitesparse -O3 -I $PATHOFARMADILLO/armadillo-10.5.1/include -DARMA_DONT_USE_WRAPPER -lblas -llapack -fopenmp
+
 ./armadillo_sdmm_suitesparse 32
 ./armadillo_spmm_suitesparse 32
 ./armadillo_spmv_suitesparse 32
