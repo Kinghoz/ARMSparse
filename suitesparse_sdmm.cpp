@@ -1,4 +1,4 @@
-//g++ -g -O3 suitesparse.cpp -o suitesparse -I /home/nscc-gz/zhengj/opt/OpenBLAS/include -L /home/nscc-gz/zhengj/opt/OpenBLAS/lib -lopenblas -fopenmp
+//g++ -g -O3 suitesparse.cpp -o suitesparse -I $PATHOFOPENBLAS/include -L $PATHOFOPENBLAS/lib -lopenblas -fopenmp
 #include <stdlib.h>
 #include <iostream>
 #include <cstdlib>
