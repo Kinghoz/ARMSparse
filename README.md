@@ -16,7 +16,7 @@ git clone git@github.com:Kinghoz/ARMSparse.git
 - OpenMP/Pthread
 
 ## ARMSparse
-Example for compiling sdmm spmm spmv 
+Examples for compiling sdmm spmm spmv 
 ```
 cd $(this-repo)
 g++ -g -O3 SDMM.cpp -o SDMM -I $PATHOFOPENBLAS/include -L $PATHOFOPENBLAS/lib -lopenblas -fopenmp
