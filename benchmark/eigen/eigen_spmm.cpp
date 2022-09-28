@@ -1,4 +1,4 @@
-//g++ -I /home/nscc-gz/zhengj/work/eigen-3.3.9 EigenSpMM.cpp -o EigenSpMM -O3 -fopenmp
+//g++ -I $PATHOFEIGEN/eigen-3.3.9 EigenSpMM.cpp -o EigenSpMM -O3 -fopenmp
 #include <Eigen/Sparse>
 #include <Eigen/Dense>
 #include <stdlib.h>
