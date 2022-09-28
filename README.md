@@ -95,9 +95,9 @@ g++ -g -O3 numaAwareSpMV.cpp -o numaAwareSpMV -I $PATHOFOPENBLAS/include -L $PAT
 ## application on GCN
 We integrate ARMSparse into pytorch and implement a graph convolution network with our contribution.
 ### Prerequisites
-- pytorch
-- dgl
-- pytorch_geometric
+- Pytorch
+- DGL
+- PYG
 
 Simple example for gcn_custom. You are able to switch the dataset to PubMed or cora and change the structure of network.
 ```
